@@ -1,0 +1,29 @@
+{
+	"name": "fonto",
+	"version": "0.0.3",
+	"description": "The Manager for self-hosted web fonts",
+	"keywords": [
+		"font", "manager"
+	],
+	"license": "MIT",
+	"repository": "prog/fonto",
+	"files": [
+		"dist/"
+	],
+	"bin": {
+		"fonto": "dist/bin.js"
+	},
+	"scripts": {
+		"build": "rm -rf dist/ && $(npm bin)/tsc",
+		"dev": "$(npm bin)/tsc --watch",
+		"prepublish": "$(npm bin)/typings install && npm run build"
+	},
+	"dependencies": {
+		"npm-which": "^2.0.0",
+		"goog-webfont-dl": "^0.3.0"
+	},
+	"devDependencies": {
+		"typescript": "^1.8.7",
+		"typings": "^0.7.4"
+	}
+}
