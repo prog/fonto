@@ -1,6 +1,6 @@
 {
 	"name": "fonto",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "The Manager for self-hosted web fonts",
 	"keywords": [
 		"font", "manager"
@@ -19,7 +19,6 @@
 		"prepublish": "$(npm bin)/typings install && npm run build"
 	},
 	"dependencies": {
-		"npm-which": "^2.0.0",
 		"goog-webfont-dl": "^0.3.0"
 	},
 	"devDependencies": {

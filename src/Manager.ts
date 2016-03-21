@@ -1,7 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
 import { execSync } from "child_process";
-const which = require("npm-which")(__dirname);
 
 import Helpers from "./Helpers";
 
@@ -41,8 +40,7 @@ class Manager {
 		const subset = stylesAndSubset[1] || "";
 		const fontDir = Helpers.dirNameByFontName(name);
 
-
-		let cmd = which.sync("goog-webfont-dl");
+		let cmd = require.resolve("goog-webfont-dl");
 		cmd += " --font \"" + (name) + "\"";
 		cmd += " --styles \"" + (styles) + "\"";
 		cmd += " --subset \"" + (subset) + "\"";
