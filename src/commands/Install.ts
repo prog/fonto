@@ -35,8 +35,13 @@ class Install extends Command {
 		const installedFonts: {[name: string]: string} = Manager.scanInstalled(fontsPath);
 
 		Object.keys(requiredFonts).forEach((name: string) => {
-			if (!installedFonts.hasOwnProperty(name) || installedFonts[name] !== requiredFonts[name]) {
+			if (!installedFonts.hasOwnProperty(name)) {
 				console.log("Installing font \"" + name + "\"...");
+				Manager.install(fontsPath, name, requiredFonts[name]);
+				console.log("done.\n");
+			} else if (installedFonts[name] !== requiredFonts[name]) {
+				console.log("Reinstalling font \"" + name + "\"...");
+				Manager.remove(fontsPath, name);
 				Manager.install(fontsPath, name, requiredFonts[name]);
 				console.log("done.\n");
 			}
