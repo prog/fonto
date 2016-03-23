@@ -28,30 +28,19 @@ class Install extends Command {
 		const requiredFonts = this.config.getFontDefs();
 		const installedFonts: {[name: string]: string} = Manager.scanInstalled(fontsPath);
 
-		const toInstall: {[name: string]: string} = {};
-		const toRemove: string[] = [];
-
 		Object.keys(requiredFonts).forEach((name: string) => {
 			if (!installedFonts.hasOwnProperty(name) || installedFonts[name] !== requiredFonts[name]) {
-				toInstall[name] = requiredFonts[name];
+				console.log("Installing font \"" + name + "\"...");
+				Manager.install(fontsPath, name, requiredFonts[name]);
+				console.log("done.\n");
 			}
 		});
 		Object.keys(installedFonts).forEach((name: string) => {
 			if (!requiredFonts.hasOwnProperty(name)) {
-				toRemove.push(name);
+				console.log("Removing font \"" + name + "\"...");
+				Manager.remove(fontsPath, name);
+				console.log("done.\n");
 			}
-		});
-
-		Object.keys(toInstall).forEach((name: string) => {
-			const def = toInstall[name];
-			console.log("Installing font \"" + name + "\"...");
-			Manager.install(fontsPath, name, def);
-			console.log("done.\n");
-		});
-		toRemove.forEach((name: string) => {
-			console.log("Removing font \"" + name + "\"...");
-			Manager.remove(fontsPath, name);
-			console.log("done.\n");
 		});
 	}
 

@@ -31,15 +31,12 @@ class Main {
 
 
 	private getCommand(name: string): Command {
-		let result: Command = null;
-		this.commands.every((command) => {
+		for (let command of this.commands) {
 			if (-1 !== command.getNames().indexOf(name)) {
-				result = command;
-				return false;
+				return command;
 			}
-			return true;
-		});
-		return result;
+		}
+		return null;
 	}
 
 
