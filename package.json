@@ -19,6 +19,7 @@
 		"prepublish": "$(npm bin)/typings install && npm run build"
 	},
 	"dependencies": {
+		"fs-extra": "^0.26.7",
 		"goog-webfont-dl": "^0.3.0"
 	},
 	"devDependencies": {

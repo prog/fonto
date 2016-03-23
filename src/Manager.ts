@@ -1,4 +1,4 @@
-import * as fs from "fs";
+import * as fs from "fs-extra";
 import * as path from "path";
 import { execSync } from "child_process";
 
@@ -49,14 +49,14 @@ class Manager {
 		cmd += " --out \"" + (path.join(fontsPath, fontDir, fontDir + ".css")) + "\"";
 		cmd += " --prefix \"\"";
 
-		execSync("mkdir -p \"" + path.join(fontsPath, fontDir) + "\"");
+		fs.mkdirpSync(path.join(fontsPath, fontDir));
 		execSync(cmd);
 		fs.writeFileSync(path.join(fontsPath, fontDir, ".fontofont"), name + ":" + def, "utf8");
 	}
 
 
 	public static remove(fontsPath: string, name: string): void {
-		execSync("rm -r \"" + path.join(fontsPath, Helpers.dirNameByFontName(name)) + "\"");
+		fs.removeSync(path.join(fontsPath, Helpers.dirNameByFontName(name)));
 	}
 
 }

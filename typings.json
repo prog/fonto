@@ -1,6 +1,7 @@
 {
 	"dependencies": {},
 	"ambientDependencies": {
+		"fs-extra": "registry:dt/fs-extra#0.0.0+20160316155526",
 		"node": "registry:dt/node#4.0.0+20160226132328"
 	}
 }
