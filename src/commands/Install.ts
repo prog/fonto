@@ -29,7 +29,7 @@ class Install extends Command {
 	}
 
 
-	public run(options: IOptions): void {
+	private run(options: IOptions): void {
 		const fontsPath = this.config.getPath();
 		const requiredFonts = this.config.getFontDefs();
 		const installedFonts: {[name: string]: string} = Manager.scanInstalled(fontsPath);
